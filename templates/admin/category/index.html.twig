@@ -1,0 +1,72 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Listesi{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Table</h4> </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Dashboard</a></li>
+                        <li class="active">Blank Page</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="white-box">
+
+                <section class="box-title">
+                    <h1 class="box-title">Kategori Listesi</h1>
+                    <h1>
+                        <small><a href="{{ path('admin_category_new') }}"class="box-title">Kategori Ekleme</a></small>
+                    </h1>
+                </section>
+
+                <div class="table-responsive">
+                    <tbody>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Parentid</th>
+                            <th>Title</th>
+                            <th>Keywords</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Goster</th>
+                            <th>Düzenle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.parentid }}</td>
+                                <td>{{ category.title }}</td>
+                                <td>{{ category.keywords }}</td>
+                                <td>{{ category.description }}</td>
+                                <td>{{ category.status }}</td>
+                                <td>
+                                    <a href="{{ path('admin_category_show', {'id': category.id}) }}"class="btn btn-success">Goster</a>
+                                </td><td>
+                                    <a href="{{ path('admin_category_edit', {'id': category.id,'pid':category.parentid}) }}"class="btn btn-danger btn-block waves-effect waves-light">Duzenle</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center"> İsa Kulaksız 2014010217045 Bilg Müh 2.Öğr (%100) </footer>
+    </div>
+    <!-- End Page Content -->
+{% endblock %}

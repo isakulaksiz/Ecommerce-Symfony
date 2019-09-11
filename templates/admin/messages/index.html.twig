@@ -1,0 +1,72 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Mesaj Listesi{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Table</h4> </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Dashboard</a></li>
+                        <li class="active">Blank Page</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="white-box">
+
+                <section class="box-title">
+                    <h1 class="box-title">Mesaj Listesi</h1>
+
+                </section>
+
+                <div class="table-responsive">
+                    <tbody>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Comment</th>
+                            <th>Status</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for message in messages %}
+                            <tr>
+                                <td>{{ message.id }}</td>
+                                <td>{{ message.name }}</td>
+                                <td>{{ message.email }}</td>
+                                <td>{{ message.subject }}</td>
+                                <td>{{ message.message }}</td>
+                                <td>{{ message.comment }}</td>
+                                <td>{{ message.status }}</td>
+                                <td>
+                                    <a href="javascript:openWin('{{ path('admin_messages_show', {'id': message.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollsBars=no,resizable=no,width=700,height=600');">
+                                        Mesaj Oku!
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('admin_messages_new') }}"class="btn btn-success">Create new</a>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center"> İsa Kulaksız 2014010217045 Bilg Müh 2.Öğr (%100) </footer>
+    </div>
+    <!-- End Page Content -->
+{% endblock %}

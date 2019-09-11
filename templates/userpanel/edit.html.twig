@@ -1,0 +1,22 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Shopcart{% endblock %}
+{% block sidebar %}{{ include('home/_usersidebar.html.twig') }}{% endblock %}
+{% block content %}
+    <div class="span9"style="background: white">
+
+
+    <ul class="breadcrumb">
+        <li><a href="{{ path('home') }}">Home</a></li>
+        <li><a href="">Shopcart Items</a></li>
+        <li class="active">Preview</li>
+    </ul>
+    <div class="well-small">
+        <div class="row-fluid">
+            <h1>Edit User</h1>
+
+            {{ include('userpanel/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+    </div>
+{% endblock %}

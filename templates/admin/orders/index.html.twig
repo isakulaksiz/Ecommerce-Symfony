@@ -1,0 +1,62 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Shopcart Listesi{% endblock %}
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{ path('home') }}">Home</a><span class="divider"></span> </li>
+    <li><a href="">Order List</a><span class="divider"></span> </li>
+    <li class="active">Preview</li>
+</ul>
+
+    <div class="well-small">
+        <div class="row-fluid">
+            <h4>Orders index</h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Userid</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Shipinfo</th>
+                    <th>Note</th>
+                    <th>Status</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.userid }}</td>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.phone }}</td>
+                        <td>{{ order.shipinfo }}</td>
+                        <td>{{ order.note }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            <a href="javascript:openWin('{{ path('admin_orders_show', {'id': order.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollsBars=no,resizable=no,width=600,height=500');"class="btn btn-success">
+                                    Göster
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+{% endblock %}

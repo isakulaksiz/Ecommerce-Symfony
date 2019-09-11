@@ -1,0 +1,48 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %} Shopcart  {% endblock %}
+{% block sidebar %} {% include ('home/_usersidebar.html.twig')%} {% endblock %}
+{% block content %}
+
+    <ul class="breadcrumb">
+        <li><a href="{{ path('home') }}">Home</a><span class="divider"></span> </li>
+        <li><a href="">Shopcart Items</a><span class="divider"></span> </li>
+        <li class="active">Preview</li>
+    </ul>
+    <div class="span9" style="background: white">
+        <h1>Shopcart items</h1>
+        {% include ('messages.html.twig')%}
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Sale Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for shopcart in shopcarts %}
+                <tr>
+                    <td>{{ shopcart.id }}</td>
+                    <td>{{ shopcart.title }}</td>
+                    <td>{{ shopcart.sprice }}</td>
+                    <td>{{ shopcart.quantity }}</td>
+                    <td>{{ shopcart.quantity * shopcart.sprice }}</td>
+                    <td>
+                    <td><a class="btn btn-danger btn-block waves-effect waves-light" href="{{ path('shopcart_del',{'id':shopcart.id}) }}"onclick="return confirm('Silmek istediğinizden eminmisiniz ?');" clas="btn btn-success">Delete</a></td>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('orders_new') }}"class="btn btn-success">Ürünleri Satınal</a>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+<form class="form-horizontal form-material"method="post">
+    <div class="white-box">
+
+        <div class="form-group">
+            <label   class="col-md-12">Email</label>
+            <div class="col-md-12">
+                <input type="text" name="user[email]" value="{{ user.email }}" placeholder="title" class="form-control form-control-line"> </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Name</label>
+            <div class="col-md-12">
+                <input type="text" name="user[name]" value="{{ user.name }}" class="form-control form-control-line" placeholder="keywords"> </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Password</label>
+            <div class="col-md-12">
+                <input type="text" name="user[password]" value="{{ user.password }}" class="form-control form-control-line" placeholder="description"> </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Roles</label>
+            <div class="col-md-12">
+                <select name="user[roles]" >
+                    {% for item in user.roles %}
+                       <option selected> {{ item }} </option>
+                    {% endfor %}
+                    <option>ROLE_ADMIN</option>
+                    <option>ROLE_USER</option>
+                    <option>ROLE_POWER</option>
+                    <option>ROLE_MEMBER</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-12">Status</label>
+            <div class="col-md-12">
+                <select name="user[status]" >
+                    <option>{{ user.status  }}</option>
+
+                    <option>True</option>
+                    <option selected>False</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button class="btn btn-success">Kaydet</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+

@@ -1,0 +1,58 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Shopcart Order Items{% endblock %}
+{% block sidebar %}{{ include('home/_usersidebar.html.twig') }}{% endblock %}
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{{ path('home') }}">Home</a><span class="divider"></span> </li>
+    <li><a href="">Order List</a><span class="divider"></span> </li>
+    <li class="active">Preview</li>
+</ul>
+
+    <div class="span9" style="background: white">
+        <div class="row-fluid">
+            <h4>Orders index</h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>City</th>
+                    <th>Phone</th>
+                    <th>Shipinfo</th>
+                    <th>Status</th>
+                    <th>Note</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.phone }}</td>
+                        <td>{{ order.shipinfo }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.note }}</td>
+                        <td>
+                            <a href="{{ path('orders_show', {'id': order.id}) }}" class="btn btn-success">show</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('orders_new') }}" class="btn btn-success">Create new</a>
+
+        </div>
+    </div>
+
+
+{% endblock %}

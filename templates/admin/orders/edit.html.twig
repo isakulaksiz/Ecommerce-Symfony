@@ -1,0 +1,12 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Shopcart Order Items{% endblock %}
+{% block sidebar %}{{ include('home/_usersidebar.html.twig') }}{% endblock %}
+{% block content %}
+    <h1>Edit Orders</h1>
+
+    {{ include('admin/orders/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_orders_index') }}">back to list</a>
+
+    {{ include('admin/orders/_delete_form.html.twig') }}
+{% endblock %}

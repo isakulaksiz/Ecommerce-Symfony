@@ -1,0 +1,164 @@
+{{ include('admin/messages.html.twig') }}
+
+<form class="form-horizontal" method="post">
+    <br><br>
+    <div class="col-md-12">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab"> Genel Bilgiler</a></li>
+                <li><a href="#tab_2" data-toggle="tab">Email</a></li>
+                <li><a href="#tab_3" data-toggle="tab">Hakkımızda</a></li>
+                <li><a href="#tab_4" data-toggle="tab">İletişim</a></li>
+                <li><a href="#tab_5" data-toggle="tab">Referanslar</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <div class="form-group">
+                        <label   class="col-md-12">Adı</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[title]" value="{{ setting.title }}" placeholder="title" class="form-control form-control-line"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Keywords</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[keywords]" value="{{ setting.keywords }}" class="form-control form-control-line" placeholder="keywords"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Description</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[description]" value="{{ setting.description }}" class="form-control form-control-line" placeholder="description"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Firma Adı</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[description]" value="{{ setting.description }}" class="form-control form-control-line" placeholder="Aşkale Çimento A.Ş."> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Adresi </label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[address]" value="{{ setting.address }}" class="form-control form-control-line" placeholder="Çarşı Mah."> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Fax </label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[fax]" value="{{ setting.fax }}" class="form-control form-control-line" placeholder="fax"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Active / Inactive</label>
+                        <div class="col-md-12">
+                            <select name="setting[status]" >
+                                <option>{{ setting.status  }}</option>
+                                <option>True</option>
+                                <option selected>False</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row"></div>
+                </div>
+
+
+                <div class="tab-pane" id="tab_2">
+                    <div class="form-group">
+                        <label   class="col-md-12">Email Server</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[smtpserver]" value="{{ setting.smtpserver }}" placeholder="" class="form-control form-control-line"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Email</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[smtpemail]" value="{{ setting.smtpemail }}" class="form-control form-control-line" placeholder="isakulaksiz.ce@gmail.com"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">Email Şifre</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[smtppassword]" value="{{ setting.smtppassword }}" class="form-control form-control-line" placeholder="Password"> </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-12">SMTP Port</label>
+                        <div class="col-md-12">
+                            <input type="text" name="setting[smtpport]" value="{{ setting.smtpport }}" class="form-control form-control-line" placeholder=""> </div>
+                    </div>
+                    <div class="row"></div>
+                </div>
+
+                <div class="tab-pane" id="tab_3">
+                    <b>İletişim</b>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <textarea id="contact"name="setting[contact]" rows="10"cols="100">{{ setting.contact }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                </div>
+
+                <div class="tab-pane" id="tab_4">
+                    <b>Hakkımızda</b>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <textarea id="aboutus"name="setting[aboutus]" rows="10"cols="100">{{ setting.aboutus }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                </div>
+                <div class="tab-pane" id="tab_5">
+                    <b>Referanslar</b>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <textarea id="referances"name="setting[referances]" rows="10"cols="100">{{ setting.referances }}</textarea>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- nav-tabs-custom -->
+
+
+        <div class="form-group">
+            <input type="submit" value="KAYDET" class="btn btn-success">
+        </div>
+
+    </div>
+
+</form>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#detail' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#contact' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#aboutus' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#referances' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

@@ -1,0 +1,56 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }}{% endblock %}
+{% block description %} {{ data[0].description }}{% endblock %}
+{% block sidebar %} {% include ('home/sidebar.html.twig')%} {% endblock %}
+
+{% block content %}
+    <div class="span9" style="background: white;">
+        <ul class="breadcrumb">
+            <li><a href="{{ path('home') }}">Home</a> <span class="divider">/</span></li>
+            <li><a href="products.html">Products</a> <span class="divider">/</span></li>
+            <li class="active">product Details</li>
+        </ul>
+        <div class="row">
+            <div id="gallery" class="span3">
+                <a href="themes/images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
+                    <img src="{{ asset('uploads') }}/images/{{ data[0].image }}" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera">
+                </a>
+                <div id="differentview" class="moreOptopm carousel slide">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            {% for rs in image %}
+                                <a href="{{ asset('uploads') }}/images/{{ rs.image }}"> <img style="width:29%" src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="span7">
+                <h3>{{ data[0].title }}</h3>
+                <hr class="soft">
+                <form name="shopcart" class="form-horizontal qtyFrm" action="{{ path('shopcart_new') }}" method="post">
+                    <div class="control-group">
+                        <label class="control-label"><span>Fiyatı :{{ data[0].sprice }} TL</span></label>
+                        <br>
+                        <label class="control-label"><span>Alacağınız Adet :</span></label>
+                        <input type="number" name="shopcart[quantity]" class="span6"value="1"placeholder="Qty"max="{{ data[0].amount }}">
+                        <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                    </div>
+                    <h4>{{ data[0].amount }} Adet Stokta var</h4>
+                    <p>{{ data[0].description }}
+                    </p>
+                    <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+                    <button type="submit"class="shopBtn"><span class="icon-shopping-cart"></span>Add to cart</button>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+{% endblock %}

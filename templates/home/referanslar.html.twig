@@ -1,0 +1,32 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Referanslar {{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }}{% endblock %}
+{% block description %} {{ data[0].description }}{% endblock %}
+{% block content %}
+    <div id="mainBody">
+        <div class="container">
+            <hr class="soften">
+            <h1>Referances</h1>
+            <hr class="soften">
+            <div class="row">
+                <div class="span4">
+                    <p>
+                        {{ data[0].referances|raw }}
+                    </p>
+                </div>
+
+                <div class="span4">
+                    <h4>Referance Us</h4>
+                    <form class="form-horizontal">
+                        <fieldset>
+
+
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
