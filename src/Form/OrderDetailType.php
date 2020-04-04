@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class OrderDetailType extends AbstractType
-{
+{ 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -21,7 +21,8 @@ class OrderDetailType extends AbstractType
             ->add('name')
             ->add('status')
         ;
-    }
+    } 
+
 
     public function configureOptions(OptionsResolver $resolver)
     {
