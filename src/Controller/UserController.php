@@ -45,7 +45,6 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="user_show", methods="GET")
      */
